@@ -47,6 +47,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fS-yI-uI8">
                                         <rect key="frame" x="325" y="29.5" width="35" height="32"/>
                                         <state key="normal" image="addGoal"/>
+                                        <connections>
+                                            <action selector="addGoalButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Hi-1a-VJt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42745098039215684" green="0.73725490196078436" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,17 +78,38 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hdy-0D-9aW">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="aGR-t7-j3O">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aGR-t7-j3O" id="df6-ac-D27">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Llb-jh-v21" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="EUE-0H-Fvx"/>
                             <constraint firstItem="Llb-jh-v21" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G3c-ZS-MX9"/>
                             <constraint firstAttribute="trailing" secondItem="Llb-jh-v21" secondAttribute="trailing" id="TvT-h1-mxx"/>
+                            <constraint firstItem="hdy-0D-9aW" firstAttribute="top" secondItem="Llb-jh-v21" secondAttribute="bottom" id="ZwW-8i-1Ii"/>
                             <constraint firstItem="ZME-oa-hsq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c9B-kJ-fOx"/>
+                            <constraint firstItem="hdy-0D-9aW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="klf-y2-aqR"/>
                             <constraint firstItem="ZME-oa-hsq" firstAttribute="top" secondItem="Llb-jh-v21" secondAttribute="bottom" constant="75" id="lrl-cG-f8c"/>
+                            <constraint firstItem="hdy-0D-9aW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pJJ-QF-s1v"/>
+                            <constraint firstItem="hdy-0D-9aW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="r0u-oa-0if"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="hdy-0D-9aW" id="Xf4-qt-R5i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
