@@ -27,7 +27,7 @@ class CreateGoalVC: UIViewController {
         
     }
     @IBAction func backPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail()
     }
     
 
