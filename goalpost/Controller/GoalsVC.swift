@@ -52,7 +52,6 @@ class GoalsVC: UIViewController {
     }
     
     @IBAction func undoGoalBtnPressed(_ sender: Any) {
-        print("hello")
         undoView.alpha = 0.0
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         managedContext.undoManager?.undo()
