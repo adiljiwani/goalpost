@@ -14,6 +14,8 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class GoalsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var undoView: UIView!
+    @IBOutlet weak var undoBtn: UIButton!
     
     var goals: [Goal] = []
     
@@ -22,6 +24,8 @@ class GoalsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = false
+        undoView.alpha = 0.0
+        undoBtn.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +49,15 @@ class GoalsVC: UIViewController {
     @IBAction func addGoalButtonPressed(_ sender: Any) {
         guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else {return}
         presentDetail(createGoalVC)
+    }
+    
+    @IBAction func undoGoalBtnPressed(_ sender: Any) {
+        print("hello")
+        undoView.alpha = 0.0
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        managedContext.undoManager?.undo()
+        fetchCoreDataObjects()
+        tableView.reloadData()
     }
     
 }
@@ -100,6 +113,21 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
 
 extension GoalsVC {
     
+    func fadeOutView(view: UIView) {
+        
+        UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
+            view.alpha = 0.0
+        }, completion: { (true) in
+            self.undoBtn.isHidden = true
+        })
+    }
+    
+    func fadeInView(view: UIView) {
+        UIView.animate(withDuration: 2.0) {
+            view.alpha = 1.0
+        }
+    }
+    
     func setProgress (atIndexPath indexPath: IndexPath) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
         let chosenGoal = goals[indexPath.row]
@@ -118,9 +146,12 @@ extension GoalsVC {
     
     func removeGoal(atIndexPath indexPath: IndexPath) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        managedContext.undoManager = UndoManager()
         managedContext.delete(goals[indexPath.row])
         do {
             try managedContext.save()
+            undoBtn.isHidden = false
+            fadeInView(view: undoView)
         } catch {
             debugPrint("Could not remove \(error.localizedDescription)")
         }

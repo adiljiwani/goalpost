@@ -195,13 +195,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-VG-HfJ">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNc-Qi-1cg">
+                                        <rect key="frame" x="295" y="5.5" width="65" height="40"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="UNDO">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoGoalBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8p9-Jt-UQL"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Removed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e7-Ig-ti9">
+                                        <rect key="frame" x="15" y="13.5" width="115.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8e7-Ig-ti9" firstAttribute="leading" secondItem="Qgj-VG-HfJ" secondAttribute="leading" constant="15" id="9c1-G2-ur8"/>
+                                    <constraint firstItem="LNc-Qi-1cg" firstAttribute="centerY" secondItem="Qgj-VG-HfJ" secondAttribute="centerY" id="cGA-IO-RHk"/>
+                                    <constraint firstItem="8e7-Ig-ti9" firstAttribute="centerY" secondItem="Qgj-VG-HfJ" secondAttribute="centerY" id="jJA-lg-Nob"/>
+                                    <constraint firstAttribute="trailing" secondItem="LNc-Qi-1cg" secondAttribute="trailing" constant="15" id="kXp-nt-48a"/>
+                                    <constraint firstAttribute="height" constant="50" id="wIN-mS-821"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Qgj-VG-HfJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0PS-9R-BSI"/>
                             <constraint firstItem="Llb-jh-v21" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="EUE-0H-Fvx"/>
                             <constraint firstItem="Llb-jh-v21" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G3c-ZS-MX9"/>
                             <constraint firstAttribute="trailing" secondItem="Llb-jh-v21" secondAttribute="trailing" id="TvT-h1-mxx"/>
                             <constraint firstItem="hdy-0D-9aW" firstAttribute="top" secondItem="Llb-jh-v21" secondAttribute="bottom" id="ZwW-8i-1Ii"/>
+                            <constraint firstItem="Qgj-VG-HfJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="amo-Of-PQH"/>
+                            <constraint firstItem="Qgj-VG-HfJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="axw-Gf-WFT"/>
                             <constraint firstItem="ZME-oa-hsq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c9B-kJ-fOx"/>
                             <constraint firstItem="hdy-0D-9aW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="klf-y2-aqR"/>
                             <constraint firstItem="ZME-oa-hsq" firstAttribute="top" secondItem="Llb-jh-v21" secondAttribute="bottom" constant="75" id="lrl-cG-f8c"/>
@@ -212,6 +244,8 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="hdy-0D-9aW" id="Xf4-qt-R5i"/>
+                        <outlet property="undoBtn" destination="LNc-Qi-1cg" id="reZ-A9-OIY"/>
+                        <outlet property="undoView" destination="Qgj-VG-HfJ" id="g8S-Ji-4mo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
