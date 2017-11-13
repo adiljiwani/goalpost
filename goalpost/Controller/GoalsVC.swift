@@ -35,6 +35,7 @@ class GoalsVC: UIViewController {
                 }
             }
         }
+        tableView.reloadData()
     }
 
     @IBAction func addGoalButtonPressed(_ sender: Any) {
